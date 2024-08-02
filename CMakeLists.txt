@@ -11,6 +11,8 @@ project(
   DESCRIPTION "Yet another model loader."
   LANGUAGES CXX C)
 
+find_package(spdlog CONFIG REQUIRED)
+
 add_compile_options(-Wall)
 
 option(FORCE_COLORED_OUTPUT
@@ -29,6 +31,8 @@ endif()
 add_executable(yaml)
 target_sources(yaml PUBLIC ${SOURCES})
 target_include_directories(yaml PUBLIC src/)
+target_link_libraries(yaml PUBLIC spdlog::spdlog)
+target_precompile_headers(yaml PUBLIC "src/core/pch.hpp")
 
 # ##############################################################################
 # copies compile_commands.json to the source cmake directory for clang support.
