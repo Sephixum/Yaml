@@ -1,8 +1,7 @@
-#include <format>
-#include <iostream>
-
+#include "core/core.hpp"
 
 int main() {
-  std::puts(std::format("Hello, {}!", "World").c_str());
+  YAML_DEBUG("Hello how are you ?");
+
   return EXIT_SUCCESS;
 }
