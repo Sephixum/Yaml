@@ -8,12 +8,12 @@ namespace Yaml {
 
 class Logger {
 private:
-  static void init() noexcept;
-
 public:
   static std::shared_ptr<spdlog::logger> s_logger;
 
+  static void init() noexcept;
   static spdlog::logger &get() noexcept;
+  static void shutDown() noexcept;
 
   Logger() = delete;
   Logger(const Logger &other) = delete;
