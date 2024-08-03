@@ -12,6 +12,7 @@ project(
   LANGUAGES CXX C)
 
 find_package(spdlog CONFIG REQUIRED)
+find_package(EnTT CONFIG REQUIRED)
 
 add_compile_options(-Wall)
 
@@ -31,7 +32,7 @@ endif()
 add_executable(yaml)
 target_sources(yaml PUBLIC ${SOURCES})
 target_include_directories(yaml PUBLIC src/)
-target_link_libraries(yaml PUBLIC spdlog::spdlog)
+target_link_libraries(yaml PUBLIC spdlog::spdlog EnTT::EnTT)
 target_precompile_headers(yaml PUBLIC "src/core/pch.hpp")
 
 # ##############################################################################
