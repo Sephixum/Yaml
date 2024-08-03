@@ -22,7 +22,6 @@ extern "C" {
 #include <utility>
 #include <variant>
 #include <vector>
-
 #endif // __cplusplus
 
 #endif // __PCH_HPP
