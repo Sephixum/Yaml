@@ -15,8 +15,8 @@ class Window {
     bool m_is_vsync_enabled = false;
     static bool m_is_sdl_initialized;
     static bool m_is_glad_initialized;
-    void makeContextCurrent();
-    void init();
+    void makeContextCurrent() noexcept;
+    void init() noexcept;
     Window(std::string_view window_title, uint8 window_x, uint8 window_y,
            uint16 window_width, uint16 window_height, uint32 window_flags);
 
@@ -29,8 +29,8 @@ class Window {
       ADAPTIVE = -1
     };
 
-    void set_vsync(VSyncTypes type);
-    VSyncTypes get_vsync_type() const;
+    void set_vsync(VSyncTypes type) noexcept;
+    VSyncTypes get_vsync_type() const noexcept;
 
     class Builder {
       private:
@@ -43,11 +43,11 @@ class Window {
 
       public:
         Builder() = default;
-        Builder &setTitle(std::string title);
-        Builder &setPosition(uint8 x, uint8 y);
-        Builder &setSize(uint16 width, uint16 height);
-        Builder &setFlags(uint32 flags);
-        Window build();
+        Builder &setTitle(std::string title) noexcept;
+        Builder &setPosition(uint8 x, uint8 y) noexcept;
+        Builder &setSize(uint16 width, uint16 height) noexcept;
+        Builder &setFlags(uint32 flags) noexcept;
+        Window build() noexcept;
     };
 };
 
