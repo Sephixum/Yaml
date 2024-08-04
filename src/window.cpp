@@ -4,6 +4,7 @@
 namespace Yaml
 {
     bool Window::m_is_sdl_initialized = false;
+    bool Window::m_is_glad_initialized = false;
 
     void Window::init()
     {
@@ -45,9 +46,13 @@ namespace Yaml
 
         this->makeContextCurrent();
 
+        if (!m_is_glad_initialized)
+        {
         YAML_ASSERTM(
             gladLoadGLLoader(reinterpret_cast<GLADloadproc>(SDL_GL_GetProcAddress)),
             "Failed to initialize GLAD")
+            m_is_glad_initialized = true;
+        }
 
         SDL_Event event;
         int w, h;
