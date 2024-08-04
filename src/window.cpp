@@ -68,6 +68,7 @@ namespace Yaml
     Window::VSyncTypes Window::get_vsync_type() const
     {
         int interval_type = SDL_GL_GetSwapInterval();
+        return static_cast<VSyncTypes>(interval_type);
     }
 
     Window::~Window()
