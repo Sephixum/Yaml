@@ -5,6 +5,10 @@
 extern "C" {
 #endif // __cplusplus
 
+#include <glad/glad.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_video.h>
+
 #if __cplusplus
 }
 #endif // __cplusplus
