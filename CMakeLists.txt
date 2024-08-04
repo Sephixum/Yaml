@@ -33,7 +33,7 @@ endif()
 add_executable(yaml)
 target_sources(yaml PUBLIC ${SOURCES})
 target_include_directories(yaml PUBLIC src/)
-target_link_libraries(yaml PUBLIC spdlog::spdlog EnTT::EnTT)
+target_link_libraries(yaml PUBLIC spdlog::spdlog EnTT::EnTT SDL2::SDL2)
 target_precompile_headers(yaml PUBLIC "src/core/pch.hpp")
 
 # ##############################################################################

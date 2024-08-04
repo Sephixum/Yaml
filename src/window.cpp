@@ -2,7 +2,6 @@
 #include <SDL2/SDL_error.h>
 #include <SDL2/SDL_video.h>
 #include <window.hpp>
-#include <glad/glad.h>
 
 namespace Yaml
 {
