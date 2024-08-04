@@ -13,6 +13,7 @@ project(
 
 find_package(spdlog CONFIG REQUIRED)
 find_package(EnTT CONFIG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
 
 add_compile_options(-Wall)
 
@@ -29,10 +30,12 @@ if(${FORCE_COLORED_OUTPUT})
   endif()
 endif()
 
+add_subdirectory(lib/glad)
+
 add_executable(yaml)
 target_sources(yaml PUBLIC ${SOURCES})
 target_include_directories(yaml PUBLIC src/)
-target_link_libraries(yaml PUBLIC spdlog::spdlog EnTT::EnTT)
+target_link_libraries(yaml PUBLIC spdlog::spdlog EnTT::EnTT glad SDL2::SDL2)
 target_precompile_headers(yaml PUBLIC "src/core/pch.hpp")
 
 # ##############################################################################
