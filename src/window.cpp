@@ -25,18 +25,6 @@ namespace Yaml
             this->m_sdl_window != nullptr,
             std::format("SDL failed to create window: {}", SDL_GetError())
         )
-
-        SDL_Surface *window_surface = SDL_GetWindowSurface(this->m_sdl_window);
-
-        YAML_ASSERTM(
-            window_surface != nullptr,
-            std::format("SDL failed to get window surface: {}", SDL_GetError())
-        )
-
-        SDL_FillRect(window_surface, nullptr, SDL_MapRGB(window_surface->format, 0xFF, 0xFF, 0xFF));
-
-        SDL_UpdateWindowSurface(this->m_sdl_window);
-        SDL_Delay(5000);
     }
 
     Window::~Window()
