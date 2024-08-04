@@ -2,6 +2,10 @@
   "dependencies": [
     "spdlog",
     "entt",
+<<<<<<< HEAD
     "sdl2"
+=======
+    "glm"
+>>>>>>> 26ca6858cc8f27ea9c2ec1f7947f7166e877dda9
   ]
 }
