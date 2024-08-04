@@ -6,7 +6,7 @@ namespace Yaml
     bool Window::m_is_sdl_initialized = false;
     bool Window::m_is_glad_initialized = false;
 
-    void Window::init()
+    void Window::init() noexcept
     {
         if (!m_is_sdl_initialized)
         {
@@ -55,17 +55,17 @@ namespace Yaml
         }
     }
 
-    void Window::makeContextCurrent()
+    void Window::makeContextCurrent() noexcept
     {
         SDL_GL_MakeCurrent(this->m_sdl_window, this->m_gl_context);
     }
 
-    void Window::set_vsync(VSyncTypes type)
+    void Window::set_vsync(VSyncTypes type) noexcept
     {
         SDL_GL_SetSwapInterval(static_cast<int>(type));
     }
 
-    Window::VSyncTypes Window::get_vsync_type() const
+    Window::VSyncTypes Window::get_vsync_type() const noexcept
     {
         int interval_type = SDL_GL_GetSwapInterval();
         return static_cast<VSyncTypes>(interval_type);
@@ -76,33 +76,33 @@ namespace Yaml
         SDL_DestroyWindow(this->m_sdl_window);
     }
 
-    Window::Builder &Window::Builder::setTitle(std::string title)
+    Window::Builder &Window::Builder::setTitle(std::string title) noexcept
     {
         this->m_window_title = title;
         return *this;
     }
 
-    Window::Builder &Window::Builder::setPosition(uint8 x, uint8 y)
+    Window::Builder &Window::Builder::setPosition(uint8 x, uint8 y) noexcept
     {
         this->m_window_x = x;
         this->m_window_y = y;
         return *this;
     }
 
-    Window::Builder &Window::Builder::setSize(uint16 width, uint16 height)
+    Window::Builder &Window::Builder::setSize(uint16 width, uint16 height) noexcept
     {
         this->m_window_width = width;
         this->m_window_height = height;
         return *this;
     }
 
-    Window::Builder &Window::Builder::setFlags(uint32 flags)
+    Window::Builder &Window::Builder::setFlags(uint32 flags) noexcept
     {
         this->m_window_flags = flags;
         return *this;
     }
 
-    Window Window::Builder::build()
+    Window Window::Builder::build() noexcept
     {
         return Window(this->m_window_title, this->m_window_x, this->m_window_y, this->m_window_width, this->m_window_height, this->m_window_flags);
     }
