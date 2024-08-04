@@ -1,6 +1,7 @@
 {
   "dependencies": [
     "spdlog",
-    "entt"
+    "entt",
+    "sdl2"
   ]
 }

@@ -13,6 +13,7 @@ project(
 
 find_package(spdlog CONFIG REQUIRED)
 find_package(EnTT CONFIG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
 
 add_compile_options(-Wall)
 
