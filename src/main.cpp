@@ -6,8 +6,8 @@ int main() {
   YAML_ASSERTM(1 == 1, "1 is not equal to 1");
 
   Yaml::Window window = Yaml::Window::Builder()
-                            .set_title("Hello World")
-                            .set_size(800,800)
+                            .setTitle("Hello World")
+                            .setSize(800,800)
                             .build();
 
 
