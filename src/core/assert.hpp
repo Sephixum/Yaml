@@ -16,7 +16,7 @@
   {                                                                            \
     if (expr) {                                                                \
     } else {                                                                   \
-      YAML_ERROR(std::format("{}, {}, {}", #expr, __FILE__, __LINE__));        \
+      YAML_CRITICAL(std::format("{}, {}, {}", #expr, __FILE__, __LINE__));     \
       debugBreak();                                                            \
     }                                                                          \
   }
@@ -25,7 +25,7 @@
   {                                                                            \
     if (expr) {                                                                \
     } else {                                                                   \
-      YAML_ERROR(                                                              \
+      YAML_CRITICAL(                                                           \
           std::format("{}, {}, {}, {}", #expr, msg, __FILE__, __LINE__));      \
       debugBreak();                                                            \
     }                                                                          \
