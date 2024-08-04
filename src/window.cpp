@@ -43,7 +43,7 @@ namespace Yaml
             this->m_gl_context != nullptr,
             "SDL failed to create OpenGL context")
 
-        this->make_context_current();
+        this->makeContextCurrent();
 
         YAML_ASSERTM(
             gladLoadGLLoader(reinterpret_cast<GLADloadproc>(SDL_GL_GetProcAddress)),
@@ -80,7 +80,7 @@ namespace Yaml
         }
     }
 
-    void Window::make_context_current()
+    void Window::makeContextCurrent()
     {
         SDL_GL_MakeCurrent(this->m_sdl_window, this->m_gl_context);
     }
@@ -100,27 +100,27 @@ namespace Yaml
         SDL_DestroyWindow(this->m_sdl_window);
     }
 
-    Window::Builder &Window::Builder::set_title(std::string title)
+    Window::Builder &Window::Builder::setTitle(std::string title)
     {
         this->m_window_title = title;
         return *this;
     }
 
-    Window::Builder &Window::Builder::set_position(uint8 x, uint8 y)
+    Window::Builder &Window::Builder::setPosition(uint8 x, uint8 y)
     {
         this->m_window_x = x;
         this->m_window_y = y;
         return *this;
     }
 
-    Window::Builder &Window::Builder::set_size(uint16 width, uint16 height)
+    Window::Builder &Window::Builder::setSize(uint16 width, uint16 height)
     {
         this->m_window_width = width;
         this->m_window_height = height;
         return *this;
     }
 
-    Window::Builder &Window::Builder::set_flags(uint32 flags)
+    Window::Builder &Window::Builder::setFlags(uint32 flags)
     {
         this->m_window_flags = flags;
         return *this;
