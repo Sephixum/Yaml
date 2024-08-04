@@ -53,36 +53,6 @@ namespace Yaml
             "Failed to initialize GLAD")
             m_is_glad_initialized = true;
         }
-
-        SDL_Event event;
-        int w, h;
-        this->set_vsync(Window::VSyncTypes::NORMAL);
-        glDisable(GL_DEPTH_TEST);
-        glDisable(GL_CULL_FACE);
-        SDL_GetWindowSize(this->m_sdl_window, &w, &h);
-        glViewport(0, 0, w, h);
-        glClearColor(0.0f, 0.5f, 1.0f, 0.0f);
-        bool quit = false;
-
-        while (!quit)
-        {
-            glClear(GL_COLOR_BUFFER_BIT);
-            SDL_GL_SwapWindow(this->m_sdl_window);
-            while (SDL_PollEvent(&event))
-            {
-                if (event.type == SDL_QUIT)
-                {
-                    quit = true;
-                }
-                else if (event.type == SDL_KEYDOWN)
-                {
-                    if (event.key.keysym.sym == SDLK_q)
-                    {
-                        quit = true;
-                    }
-                }
-            }
-        }
     }
 
     void Window::makeContextCurrent()
