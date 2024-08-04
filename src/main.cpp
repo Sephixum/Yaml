@@ -1,5 +1,5 @@
 #include "core/core.hpp"
-#include "window.hpp"
+#include "core/window.hpp"
 
 int main() {
   YAML_DEBUG("Hello how are you ?");

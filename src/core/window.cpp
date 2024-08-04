@@ -1,5 +1,5 @@
 #include "core/core.hpp"
-#include <window.hpp>
+#include <core/window.hpp>
 
 namespace Yaml
 {
