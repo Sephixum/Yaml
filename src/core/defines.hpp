@@ -20,4 +20,8 @@ using uint64 = uint64_t;
 #define YAML_TRACE(...) ::Yaml::Logger::get().trace(__VA_ARGS__);
 #define YAML_ERROR(...) ::Yaml::Logger::get().error(__VA_ARGS__);
 
+// Study SDL Wiki for the
+// reason why this is here
+#define SDL_MAIN_HANDLED
+
 #endif // __DEFINES_HPP
