@@ -30,9 +30,9 @@ Window::Window(std::string_view window_title, uint32 window_x, uint32 window_y,
                uint16 window_width, uint16 window_height, uint32 window_flags) {
   this->init();
 
-  this->m_sdl_window =
-      SDL_CreateWindow(window_title.data(), window_x, window_y, window_width,
-                       window_height, window_flags);
+  this->m_sdl_window = SDL_CreateWindow(
+      window_title.data(), static_cast<int>(window_x),
+      static_cast<int>(window_y), window_width, window_height, window_flags);
   YAML_ASSERTM(this->m_sdl_window != nullptr,
                std::format("SDL failed to create window: {}", SDL_GetError()))
 
@@ -42,13 +42,6 @@ Window::Window(std::string_view window_title, uint32 window_x, uint32 window_y,
                "SDL failed to create OpenGL context")
 
   this->makeContextCurrent();
-
-  if (!m_is_glad_initialized) {
-    YAML_ASSERTM(
-        gladLoadGLLoader(reinterpret_cast<GLADloadproc>(SDL_GL_GetProcAddress)),
-        "Failed to initialize GLAD")
-    m_is_glad_initialized = true;
-  }
 }
 
 void Window::makeContextCurrent() noexcept {

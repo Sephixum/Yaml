@@ -5,8 +5,6 @@
 extern "C" {
 #endif // __cplusplus
 
-#include <glad/glad.h>
-
 #if __cplusplus
 }
 #endif // __cplusplus
