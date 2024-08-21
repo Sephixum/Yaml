@@ -9,7 +9,6 @@ namespace Yaml {
 template <typename... Componenets> class EntityView {
 
   friend class Scene;
-
   using view_type = entt::view<entt::get_t<Componenets...>>;
 
 private:
@@ -53,7 +52,7 @@ public:
 
 public:
   class iterator {
-  protected:
+  private:
     int32 m_index{0};
     EntityView<Componenets...> &m_view;
 
@@ -85,8 +84,11 @@ public:
     }
   };
 
-  iterator begin() { return iterator(*this, 0); }
-  iterator end() { return iterator(*this, size()); }
+  iterator begin() noexcept { return iterator(*this, 0); }
+  iterator end() noexcept { return iterator(*this, size()); }
+
+  iterator cbegin() const noexcept { return iterator(*this, 0); }
+  iterator cend() const noexcept { return iterator(*this, size()); }
 };
 
 } // namespace Yaml
