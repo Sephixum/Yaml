@@ -16,10 +16,6 @@ private:
   std::weak_ptr<Scene> m_scene{};
   view_type m_view;
 
-  //   EntityView(std::shared_ptr<Scene> scene)
-  //       : m_scene{scene},
-  //         m_view{m_scene.lock()->getRegistry().view<Componenets...>()} {}
-
 public:
   EntityView(std::shared_ptr<Scene> scene) : m_scene{scene} {
     auto locked_scene = m_scene.lock();
@@ -36,7 +32,7 @@ public:
 
   class iterator;
 
-  Entity operator[](int32 idx) noexcept {
+  [[nodiscard]] [[deprecated]] Entity operator[](int32 idx) noexcept {
     YAML_ASSERTM(idx < size(), "Index out of range.");
 
     auto scene = m_scene.lock();
@@ -49,13 +45,15 @@ public:
 
   bool isEmpty() const noexcept { return m_view.empty(); }
 
-  int32 size() const noexcept { return m_view.size(); }
+  int32 size() const noexcept {
+    return static_cast<int32>(std::distance(m_view.begin(), m_view.end()));
+  }
 
   Entity getFront() const noexcept { return Entity(m_view[0], m_scene.lock()); }
 
 public:
   class iterator {
-  private:
+  protected:
     int32 m_index{0};
     EntityView<Componenets...> &m_view;
 
