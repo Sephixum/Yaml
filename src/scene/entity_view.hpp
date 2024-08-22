@@ -6,10 +6,10 @@
 
 namespace Yaml {
 
-template <typename... Componenets> class EntityView {
+template <typename... Components> class EntityView {
 
   friend class Scene;
-  using view_type = entt::view<entt::get_t<Componenets...>>;
+  using view_type = entt::view<entt::get_t<Components...>>;
 
 private:
   std::weak_ptr<Scene> m_scene{};
@@ -20,7 +20,7 @@ public:
     auto locked_scene = m_scene.lock();
     YAML_ASSERTM(locked_scene, "Scene is NULL !!");
 
-    m_view = locked_scene->getRegistry().view<Componenets...>();
+    m_view = locked_scene->getRegistry().view<Components...>();
   }
 
   EntityView(const EntityView &other) = delete;
@@ -54,7 +54,7 @@ public:
   class iterator {
   private:
     int32 m_index{0};
-    EntityView<Componenets...> &m_view;
+    EntityView<Components...> &m_view;
 
   public:
     using iterator_category = std::forward_iterator_tag;
@@ -63,7 +63,7 @@ public:
     using pointer = Entity *;
     using reference = Entity &;
 
-    explicit iterator(EntityView<Componenets...> &view, int32 index = 0)
+    explicit iterator(EntityView<Components...> &view, int32 index = 0)
         : m_index{index}, m_view{view} {}
 
     Entity operator*() const noexcept { return m_view[m_index]; }
