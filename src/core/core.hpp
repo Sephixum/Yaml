@@ -1,8 +1,9 @@
 #ifndef __CORE_HPP
 #define __CORE_HPP
 
-#include "assert.hpp"
 #include "defines.hpp"
+
+#include "assert.hpp"
 #include "logger.hpp"
 
 

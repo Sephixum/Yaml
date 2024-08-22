@@ -23,6 +23,22 @@ public:
   ~Logger() = delete;
 };
 
+#ifdef YAML_LOGGING_ENABLED
+#define YAML_WARN(...) ::Yaml::Logger::get().warn(__VA_ARGS__);
+#define YAML_CRITICAL(...) ::Yaml::Logger::get().critical(__VA_ARGS__);
+#define YAML_INFO(...) ::Yaml::Logger::get().info(__VA_ARGS__);
+#define YAML_DEBUG(...) ::Yaml::Logger::get().debug(__VA_ARGS__);
+#define YAML_TRACE(...) ::Yaml::Logger::get().trace(__VA_ARGS__);
+#define YAML_ERROR(...) ::Yaml::Logger::get().error(__VA_ARGS__);
+#else
+#define YAML_WARN(...)
+#define YAML_CRITICAL(...)
+#define YAML_INFO(...)
+#define YAML_DEBUG(...)
+#define YAML_TRACE(...)
+#define YAML_ERROR(...)
+#endif // YAML_LOGGING_ENABLED
+
 } // namespace Yaml
 
 #endif // __LOG_HPP

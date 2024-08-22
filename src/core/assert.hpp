@@ -1,7 +1,7 @@
 #ifndef __ASSERT_HPP
 #define __ASSERT_HPP
 
-#define YAML_ASSERTIONS_ENABLED
+#include "pch.hpp"
 
 #ifdef YAML_ASSERTIONS_ENABLED
 #if _MSC_VER
@@ -15,7 +15,10 @@
   {                                                                            \
     if (expr) {                                                                \
     } else {                                                                   \
-      YAML_CRITICAL(std::format("{}, {}, {}", #expr, __FILE__, __LINE__));     \
+      YAML_CRITICAL(std::format(                                               \
+          "{}, {}, {}", #expr,                                                 \
+          std::string(__FILE__).substr(std::string(__FILE__).find("src")),     \
+          __LINE__));                                                          \
       debugBreak();                                                            \
     }                                                                          \
   }
@@ -24,8 +27,10 @@
   {                                                                            \
     if (expr) {                                                                \
     } else {                                                                   \
-      YAML_CRITICAL(                                                           \
-          std::format("{}, {}, {}, {}", #expr, msg, __FILE__, __LINE__));      \
+      YAML_CRITICAL(std::format(                                               \
+          "{}, {}, {}, {}", #expr, msg,                                        \
+          std::string(__FILE__).substr(std::string(__FILE__).find("src")),     \
+          __LINE__));                                                          \
       debugBreak();                                                            \
     }                                                                          \
   }
