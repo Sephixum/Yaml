@@ -10,7 +10,6 @@
 #else
 #define debugBreak() __builtin_trap()
 #endif
-#endif // YAML_ASSERTIONS_ENABLED
 
 #define YAML_ASSERT(expr)                                                      \
   {                                                                            \
@@ -30,5 +29,12 @@
       debugBreak();                                                            \
     }                                                                          \
   }
+
+#else
+
+#define YAML_ASSERT(expr)
+#define YAML_ASSERTM(expr, msg)
+
+#endif // YAML_ASSERTIONS_ENABLED
 
 #endif // __ASSERT_HPP
