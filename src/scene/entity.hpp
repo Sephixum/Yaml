@@ -13,8 +13,8 @@ class Entity {
   template <typename... Componenets> friend class EntityView;
 
 private:
-  entt::entity m_handle{entt::null};
   std::weak_ptr<Scene> m_scene{};
+  entt::entity m_handle{entt::null};
 
   explicit Entity(std::shared_ptr<Scene> scene, entt::entity handle);
 

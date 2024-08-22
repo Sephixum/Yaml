@@ -40,7 +40,7 @@ public:
     return EntityView<Components...>(shared_from_this());
   }
 
-  bool isEntityValid(const Entity &entity);
+  bool isEntityValid(const Entity &entity) const noexcept;
   void clearEntities() noexcept;
 
   template <typename... Components> void clearEntities() noexcept {

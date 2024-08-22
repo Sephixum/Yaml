@@ -29,8 +29,6 @@ public:
   EntityView &operator=(EntityView &&rhs) = default;
   ~EntityView() = default;
 
-  class iterator;
-
   [[nodiscard]] [[deprecated]] Entity operator[](int32 idx) noexcept {
     YAML_ASSERTM(idx < size(), "Index out of range.");
 

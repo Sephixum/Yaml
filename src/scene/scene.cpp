@@ -22,7 +22,7 @@ entt::registry &Scene::getRegistry() noexcept { return m_registry; }
 
 const std::string &Scene::getName() const noexcept { return m_name; }
 
-bool Scene::isEntityValid(const Entity &entity) {
+bool Scene::isEntityValid(const Entity &entity) const noexcept {
   return m_registry.valid(entity.m_handle);
 }
 
