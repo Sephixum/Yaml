@@ -9,6 +9,10 @@ struct WindowProps {
   std::string title{"Yaml window"};
   uint32 width{1280};
   uint32 height{720};
+
+  WindowProps() = default;
+  WindowProps(const std::string &title, uint32 width, uint32 height) noexcept
+      : title(title), width{width}, height{height} {}
 };
 
 class Event;
@@ -17,7 +21,7 @@ class IWindow {
 public:
   using event_callback_func = std::function<void(Event &)>;
 
-  static IWindow *create(const WindowProps &props = WindowProps("", 12, 13));
+  static IWindow *create(const WindowProps &props = WindowProps{});
 
   IWindow() = default;
   IWindow(const IWindow &other) = delete;

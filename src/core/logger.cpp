@@ -10,12 +10,12 @@ void Logger::init() noexcept {
 }
 
 spdlog::logger &Logger::get() noexcept {
-  [[maybe_unused]] static auto _ = std::invoke([]() {
+  [[maybe_unused]] static auto _{std::invoke([]() {
     if (!s_logger) {
       init();
     }
     return 'c';
-  });
+  })};
 
   return *s_logger;
 }

@@ -46,21 +46,26 @@ uint32 OpenGLWindow::getWidth() const noexcept { return m_data.width; }
 
 uint32 OpenGLWindow::getHeight() const noexcept { return m_data.height; }
 
-void OpenGLWindow::onUpdate() { YAML_ASSERT(false); }
+void OpenGLWindow::onUpdate() {
+  glfwPollEvents();
+  glfwSwapBuffers(m_window);
+}
 
 void OpenGLWindow::setEventCallback(const event_callback_func &call_back) {
   (void)call_back;
   YAML_ASSERT(false);
 }
 
-bool OpenGLWindow::isVSync() const noexcept {
-  YAML_ASSERT(false);
-  return false;
-}
+bool OpenGLWindow::isVSync() const noexcept { return m_data.vsync; }
 
 void OpenGLWindow::setVSync(bool enabled) noexcept {
-  (void)enabled;
-  YAML_ASSERT(false);
+  if (enabled) {
+    glfwSwapInterval(1);
+  } else {
+    glfwSwapInterval(0);
+  }
+
+  m_data.vsync = enabled;
 }
 
 } // namespace Yaml
