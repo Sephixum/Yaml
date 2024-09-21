@@ -13,7 +13,7 @@ project(
 
 find_package(spdlog CONFIG REQUIRED)
 find_package(EnTT CONFIG REQUIRED)
-find_package(SDL2 CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
 
 add_compile_options(-Wall)
 
@@ -33,7 +33,7 @@ endif()
 add_executable(yaml)
 target_sources(yaml PUBLIC ${SOURCES})
 target_include_directories(yaml PUBLIC src/)
-target_link_libraries(yaml PUBLIC spdlog::spdlog EnTT::EnTT SDL2::SDL2)
+target_link_libraries(yaml PUBLIC spdlog::spdlog EnTT::EnTT glfw)
 target_precompile_headers(yaml PUBLIC "src/core/pch.hpp")
 
 # ##############################################################################

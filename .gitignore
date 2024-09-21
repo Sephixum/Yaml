@@ -48,3 +48,5 @@ out/
 .vscode/
 .vs/
 .cache/
+.history/
+vcpkg_installed/
