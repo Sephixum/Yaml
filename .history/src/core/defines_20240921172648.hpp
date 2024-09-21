@@ -13,14 +13,8 @@ using uint16 = uint16_t;
 using uint32 = uint32_t;
 using uint64 = uint64_t;
 
-#define YAML_DEBUG_BUILD
-
-#if defined(YAML_DEBUG_BUILD)
-
 #define YAML_ASSERTIONS_ENABLED
 #define YAML_LOGGING_ENABLED
-
-#endif
 
 #define BIT(x) (1 << x)
 

@@ -14,7 +14,6 @@
 #define YAML_ASSERT(expr)                                                      \
   {                                                                            \
     if (expr) {                                                                \
-      (void)(expr);                                                            \
     } else {                                                                   \
       YAML_CRITICAL(std::format(                                               \
           "{}, {}, {}", #expr,                                                 \
@@ -27,7 +26,6 @@
 #define YAML_ASSERTM(expr, msg)                                                \
   {                                                                            \
     if (expr) {                                                                \
-      (void)(expr);                                                            \
     } else {                                                                   \
       YAML_CRITICAL(std::format(                                               \
           "{}, {}, {}, {}", #expr, msg,                                        \

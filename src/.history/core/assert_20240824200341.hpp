@@ -3,7 +3,7 @@
 
 #include "pch.hpp"
 
-#if defined(YAML_ASSERTIONS_ENABLED) || defined(NDEBUG)
+#ifdef YAML_ASSERTIONS_ENABLED
 #if _MSC_VER
 #include <intrin.h>
 #define debugBreak() __debugbreak()
@@ -14,7 +14,6 @@
 #define YAML_ASSERT(expr)                                                      \
   {                                                                            \
     if (expr) {                                                                \
-      (void)(expr);                                                            \
     } else {                                                                   \
       YAML_CRITICAL(std::format(                                               \
           "{}, {}, {}", #expr,                                                 \
@@ -27,7 +26,6 @@
 #define YAML_ASSERTM(expr, msg)                                                \
   {                                                                            \
     if (expr) {                                                                \
-      (void)(expr);                                                            \
     } else {                                                                   \
       YAML_CRITICAL(std::format(                                               \
           "{}, {}, {}, {}", #expr, msg,                                        \
